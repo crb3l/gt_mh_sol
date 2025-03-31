@@ -1,5 +1,5 @@
 import random
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt # I wanted to plot the results, only thing being that matplotlib gave me troubles when exporting to an .exe so I had no choice, but to not plot the results ):
 
 
 def monty_hall_simulation(n_doors, k_repetitions):
@@ -57,35 +57,6 @@ def run_simulations_for_n(n_values, k_values):
     return results
 
 
-def plot_results(results, n_values, k_values):
-
-    fig, axes = plt.subplots(len(n_values), 1, figsize=(10, 4 * len(n_values)))
-    if len(n_values) == 1:
-        axes = [axes]
-
-    for i, n in enumerate(n_values):
-        ax = axes[i]
-        k_values_log = [k for k in k_values]
-        strategy1_probs = [results[n][k][0] for k in k_values]
-        strategy2_probs = [results[n][k][1] for k in k_values]
-
-        ax.plot(k_values_log, strategy1_probs, 'o-', label='Strategy 1 (Stay)')
-        ax.plot(k_values_log, strategy2_probs, 's-', label='Strategy 2 (Switch)')
-        ax.axhline(y=1 / n, color='r', linestyle='--', label=f'Expected Strategy 1 (1/{n})')
-        ax.axhline(y=(n - 1) / n, color='g', linestyle='--', label=f'Expected Strategy 2 ({n - 1}/{n})')
-
-        ax.set_xscale('log')
-        ax.set_xlabel('Number of Repetitions (K)')
-        ax.set_ylabel('Probability of Winning')
-        ax.set_title(f'Monty Hall Simulation Results for N = {n} Doors')
-        ax.grid(True)
-        ax.legend()
-
-    plt.tight_layout()
-    plt.savefig('problem2(montyhall)_results.png')
-    plt.close()
-
-
 def main():
     n_values = [3, 4, 5, 10, 20]
     k_values = [10, 100, 1000, 10000]
@@ -101,14 +72,8 @@ def main():
 
     # run the sim
     results = run_simulations_for_n(n_values, k_values)
-
-    # plot the results
-    try:
-        plot_results(results, n_values, k_values)
-        print("\nResults have been plotted and saved as 'problem2(montyhall)_results.png' in .exe dir.")
-    except ImportError:
-        print("\nMatplotlib is not available. Results have not been plotted.")
-
+    input("/n When ready, please press any alphanumerical or modifier key to continue.")
 
 if __name__ == "__main__":
     main()
+
