@@ -73,7 +73,7 @@ def main():
 
     # run the sim
     results = run_simulations_for_n(n_values, k_values)
-    input("/n When ready, please press any alphanumerical or modifier key to continue.")
+    input("\n When ready, please press any alphanumerical or modifier key to continue.")
 
 if __name__ == "__main__":
     main()
