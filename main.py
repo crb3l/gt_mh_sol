@@ -2,6 +2,7 @@ import random
 # import matplotlib.pyplot as plt # I wanted to plot the results, only thing being that matplotlib gave me troubles when exporting to an .exe so I had no choice, but to not plot the results ):
 
 
+
 def monty_hall_simulation(n_doors, k_repetitions):
     if n_doors < 3:
         raise ValueError("Number of doors must be at least 3")
